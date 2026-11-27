@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Register the upstream recipes repository for bioconda-utils
+        if: github.repository != 'bioconda/bioconda-recipes'
+        run: git remote add upstream https://github.com/bioconda/bioconda-recipes.git
+
       - name: Fetch commits through the merge base
         uses: fulcrumgenomics/fetch-through-merge-base@v1
         with:
@@ -98,6 +102,10 @@ jobs:
             /usr/share/swift
 
       - uses: actions/checkout@v4
+
+      - name: Register the upstream recipes repository for bioconda-utils
+        if: github.repository != 'bioconda/bioconda-recipes'
+        run: git remote add upstream https://github.com/bioconda/bioconda-recipes.git
 
       - name: Fetch commits through the merge base
         uses: fulcrumgenomics/fetch-through-merge-base@v1
@@ -201,6 +209,10 @@ jobs:
     needs: build-linux
     steps:
       - uses: actions/checkout@v4
+
+      - name: Register the upstream recipes repository for bioconda-utils
+        if: github.repository != 'bioconda/bioconda-recipes'
+        run: git remote add upstream https://github.com/bioconda/bioconda-recipes.git
       
       - name: Fetch commits through the merge base
         uses: fulcrumgenomics/fetch-through-merge-base@v1
